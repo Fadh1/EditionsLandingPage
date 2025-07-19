@@ -3,7 +3,7 @@ import { Logo } from '@/components/Logo'
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900">
+    <footer className="bg-black">
       <Container>
         <div className="py-16">
           <Logo className="mx-auto" />
