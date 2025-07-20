@@ -1,5 +1,7 @@
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import Image from 'next/image'
+import appScreenshot from '@/images/screenshots/SS1.png'
 
 export function Hero() {
   return (
@@ -20,6 +22,18 @@ export function Hero() {
               <Button href="#" variant="outline" color="white">
                 View Demo
               </Button>
+            </div>
+          </div>
+          
+          {/* App Screenshot */}
+          <div className="mt-16 w-full max-w-6xl">
+            <div className="relative">
+              <Image
+                src={appScreenshot}
+                alt="Refineset application interface showing the iteration workflow"
+                className="w-full h-auto rounded-lg shadow-2xl ring-1 ring-white/10"
+                priority
+              />
             </div>
           </div>
         </div>
