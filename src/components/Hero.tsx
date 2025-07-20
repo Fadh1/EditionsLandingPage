@@ -16,7 +16,7 @@ export function Hero() {
               Refineset gives you a simple way to refine your work. Go from messy draft to better version—again and again.
             </p>
             <div className="mt-10 flex justify-center">
-              <Button href="/register" color="blue">
+              <Button href="/register" color="white">
                 Get Started
               </Button>
             </div>
