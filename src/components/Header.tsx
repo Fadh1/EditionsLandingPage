@@ -12,11 +12,6 @@ export function Header() {
           <Link href="#" aria-label="Home">
             <Logo />
           </Link>
-          <div className="flex items-center gap-x-6">
-            <Button href="/register" color="blue">
-              Get Started
-            </Button>
-          </div>
         </nav>
       </Container>
     </header>
