@@ -1,8 +1,8 @@
 import { Container } from '@/components/Container'
 import Image from 'next/image'
-import firstScreen from '@/images/screenshots/First Screen.png'
-import secondScreen from '@/images/screenshots/Second Screen.png'
-import thirdScreen from '@/images/screenshots/Thrid Screen.png'
+import startNewIterations from '@/images/screenshots/Start_New_Iterations.png'
+import findNextImprovement from '@/images/screenshots/Find_Next_Improvement.png'
+import closeTheGap from '@/images/screenshots/Close_the_Gap.png'
 
 const steps = [
   {
@@ -10,21 +10,21 @@ const steps = [
     title: 'Start a New Iteration',
     description: 'Upload screenshots, photos, or videos of your current work. Whether you\'re building a product, designing an interface, or iterating on a project — Refineset captures your exact starting point.',
     subtitle: 'See clearly where you are before deciding where to go.',
-    image: firstScreen,
+    image: startNewIterations,
   },
   {
     step: '02',
     title: 'Find the Next Improvement',
     description: 'Write your thoughts. What\'s working? What\'s not? Refineset helps you reflect through structured writing — guiding you to uncover the next step that actually moves the needle.',
     subtitle: 'Progress starts with clarity.',
-    image: secondScreen,
+    image: findNextImprovement,
   },
   {
     step: '03',
     title: 'Close the Gap',
     description: 'Act on what you\'ve discovered. Use your insight to make the improvement — and move from one version to a better one.',
     subtitle: 'One change at a time, better becomes inevitable.',
-    image: thirdScreen,
+    image: closeTheGap,
   },
 ]
 
