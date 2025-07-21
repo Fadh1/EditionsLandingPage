@@ -14,7 +14,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'div'>) {
           Refineset
         </span>
         <span className="hidden sm:block text-[10px] font-medium tracking-widest text-gray-400 uppercase leading-none mt-0.5">
-          Iterate Forward
+          Again, But Better
         </span>
       </div>
     </div>
