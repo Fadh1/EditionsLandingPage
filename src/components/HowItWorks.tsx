@@ -6,27 +6,24 @@ import thirdScreen from '@/images/screenshots/Thrid Screen.png'
 
 const steps = [
   {
-    step: '1',
+    step: '01',
     title: 'Start a New Iteration',
     description: 'Upload screenshots, photos, or videos of your current work. Whether you\'re building a product, designing an interface, or iterating on a project — Refineset captures your exact starting point.',
     subtitle: 'See clearly where you are before deciding where to go.',
-    icon: '📸',
     image: firstScreen,
   },
   {
-    step: '2',
+    step: '02',
     title: 'Find the Next Improvement',
     description: 'Write your thoughts. What\'s working? What\'s not? Refineset helps you reflect through structured writing — guiding you to uncover the next step that actually moves the needle.',
     subtitle: 'Progress starts with clarity.',
-    icon: '💭',
     image: secondScreen,
   },
   {
-    step: '3',
+    step: '03',
     title: 'Close the Gap',
     description: 'Act on what you\'ve discovered. Use your insight to make the improvement — and move from one version to a better one.',
     subtitle: 'One change at a time, better becomes inevitable.',
-    icon: '🎯',
     image: thirdScreen,
   },
 ]
@@ -35,62 +32,89 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden bg-gray-900 py-20 sm:py-32"
+      className="relative py-24 sm:py-32"
     >
-      <Container>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            How It Works
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950/50 to-black" />
+      
+      <Container className="relative">
+        {/* Section Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center rounded-full border border-gray-800 bg-gray-900/50 px-4 py-2 text-sm text-gray-400 backdrop-blur-sm">
+            How it works
+          </div>
+          <h2 className="mt-8 font-display text-4xl font-medium tracking-tight text-white sm:text-5xl">
+            Three steps to better
           </h2>
-          <p className="mt-4 text-lg tracking-tight text-gray-300">
-            Three simple steps to transform your work from good to better, one iteration at a time.
+          <p className="mt-6 text-xl leading-8 text-gray-400">
+            A simple process designed to help you move from good to great, one iteration at a time.
           </p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-6xl sm:mt-20 lg:mt-24">
-          <div className="grid gap-24 lg:gap-32">
+        {/* Steps */}
+        <div className="mx-auto mt-20 max-w-7xl sm:mt-28">
+          <div className="space-y-32 sm:space-y-40">
             {steps.map((step, index) => (
               <div key={step.step} className="relative">
-                {/* Connecting line */}
+                {/* Connection Line */}
                 {index < steps.length - 1 && (
-                  <div className="absolute left-8 top-20 h-32 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600 lg:left-1/2 lg:-translate-x-px lg:top-24 lg:h-40" />
+                  <div className="absolute left-1/2 top-full z-0 h-32 w-px -translate-x-px bg-gradient-to-b from-gray-700/50 via-gray-800/30 to-transparent sm:h-40" />
                 )}
                 
-                <div className={`flex flex-col gap-12 lg:gap-16 ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } lg:items-center`}>
+                <div className={`relative z-10 grid gap-16 lg:grid-cols-2 lg:gap-20 ${
+                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                }`}>
                   
-                  {/* Content Side */}
-                  <div className="flex-1 lg:max-w-lg">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-2xl font-bold text-white">
-                        {step.step}
+                  {/* Content */}
+                  <div className={`flex flex-col justify-center ${
+                    index % 2 === 1 ? 'lg:col-start-2' : ''
+                  }`}>
+                    {/* Step Number */}
+                    <div className="flex items-center gap-4 mb-8">
+                      <div className="relative">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-gray-900/50 text-sm font-medium text-gray-400 backdrop-blur-sm">
+                          {step.step}
+                        </div>
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
                       </div>
-                      <div className="text-3xl">{step.icon}</div>
+                      <div className="h-px flex-1 bg-gradient-to-r from-gray-800 to-transparent" />
                     </div>
                     
-                    <h3 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                      {step.title}
-                    </h3>
-                    <p className="mt-4 text-base leading-7 text-gray-300 sm:text-lg">
-                      {step.description}
-                    </p>
-                    <p className="mt-4 text-sm font-medium italic text-blue-400 sm:text-base">
-                      {step.subtitle}
-                    </p>
+                    {/* Content */}
+                    <div className="space-y-6">
+                      <h3 className="font-display text-3xl font-medium tracking-tight text-white sm:text-4xl">
+                        {step.title}
+                      </h3>
+                      <p className="text-lg leading-8 text-gray-300">
+                        {step.description}
+                      </p>
+                      <p className="text-base font-medium text-blue-400">
+                        {step.subtitle}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Image Side */}
-                  <div className="flex-1 lg:max-w-lg">
-                    <div className="relative">
-                      <Image
-                        src={step.image}
-                        alt={`${step.title} - Refineset application screenshot`}
-                        className="w-full h-auto rounded-lg shadow-2xl ring-1 ring-white/10"
-                        priority={index === 0}
-                      />
-                      {/* Subtle overlay for better text contrast on hover */}
-                      <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/20 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
+                  {/* Image */}
+                  <div className={`relative ${
+                    index % 2 === 1 ? 'lg:col-start-1' : ''
+                  }`}>
+                    <div className="group relative">
+                      {/* Device Frame */}
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/50 p-2 backdrop-blur-sm transition-all duration-700 group-hover:border-gray-700 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+                        <div className="overflow-hidden rounded-xl">
+                          <Image
+                            src={step.image}
+                            alt={`${step.title} - Step ${step.step}`}
+                            className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                            priority={index === 0}
+                          />
+                          {/* Subtle overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-gray-900/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                        </div>
+                      </div>
+                      
+                      {/* Ambient Glow */}
+                      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
                     </div>
                   </div>
                 </div>
@@ -100,12 +124,13 @@ export function HowItWorks() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mx-auto mt-16 max-w-2xl text-center sm:mt-20">
-          <p className="text-lg font-medium text-white">
-            Ready to start refining?
-          </p>
-          <p className="mt-2 text-gray-300">
-            Join thousands of creators who are building better, one iteration at a time.
+        <div className="mx-auto mt-28 max-w-2xl text-center sm:mt-36">
+          <div className="inline-flex items-center gap-3 rounded-full border border-gray-800 bg-gray-900/50 px-6 py-3 backdrop-blur-sm">
+            <div className="h-2 w-2 rounded-full bg-green-400" />
+            <span className="text-sm font-medium text-gray-300">Ready to start refining</span>
+          </div>
+          <p className="mt-6 text-lg leading-8 text-gray-400">
+            Join thousands of creators building better, one iteration at a time.
           </p>
         </div>
       </Container>
