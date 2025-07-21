@@ -1,24 +1,6 @@
 import clsx from 'clsx'
-
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-
-function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 281 40"
-      preserveAspectRatio="none"
-      {...props}
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z"
-      />
-    </svg>
-  )
-}
 
 function CheckIcon({
   className,
@@ -27,87 +9,130 @@ function CheckIcon({
   return (
     <svg
       aria-hidden="true"
-      className={clsx(
-        'h-6 w-6 flex-none fill-current stroke-current',
-        className,
-      )}
+      className={clsx('h-4 w-4 flex-none', className)}
+      viewBox="0 0 16 16"
       {...props}
     >
+      <circle cx={8} cy={8} r={8} fill="currentColor" className="opacity-20" />
       <path
-        d="M9.307 12.248a.75.75 0 1 0-1.114 1.004l1.114-1.004ZM11 15.25l-.557.502a.75.75 0 0 0 1.15-.043L11 15.25Zm4.844-5.041a.75.75 0 0 0-1.188-.918l1.188.918Zm-7.651 3.043 2.25 2.5 1.114-1.004-2.25-2.5-1.114 1.004Zm3.4 2.457 4.25-5.5-1.187-.918-4.25 5.5 1.188.918Z"
-        strokeWidth={0}
-      />
-      <circle
-        cx={12}
-        cy={12}
-        r={8.25}
+        d="m5.5 7.5 2 2L11 6"
         fill="none"
-        strokeWidth={1.5}
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth={1.5}
       />
     </svg>
   )
 }
 
-function Plan({
+function StarterBadge() {
+  return (
+    <div className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 backdrop-blur-sm">
+      <span className="relative mr-2 h-1.5 w-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+      </span>
+      Beta Access
+    </div>
+  )
+}
+
+function PricingCard({
   name,
   price,
   description,
   href,
   features,
-  featured = false,
+  comingSoon = false,
+  badge,
 }: {
   name: string
   price: string
   description: string
   href: string
   features: Array<string>
-  featured?: boolean
+  comingSoon?: boolean
+  badge?: React.ReactNode
 }) {
   return (
-    <section
+    <div
       className={clsx(
-        'flex flex-col rounded-3xl px-6 sm:px-8',
-        featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8',
+        'group relative rounded-3xl transition-all duration-300 hover:scale-[1.02]',
+        'bg-gradient-to-b from-gray-900/80 to-gray-950/80',
+        'border border-gray-800/50 hover:border-gray-700/50',
+        'backdrop-blur-xl shadow-2xl hover:shadow-[0_20px_70px_-10px_rgba(0,0,0,0.3)]'
       )}
     >
-      <h3 className="mt-5 font-display text-lg text-white">{name}</h3>
-      <p
-        className={clsx(
-          'mt-2 text-base',
-          featured ? 'text-white' : 'text-slate-400',
+      {/* Subtle glow effect */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-emerald-500/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      
+      <div className="relative p-8 sm:p-10">
+        {/* Badge */}
+        {badge && (
+          <div className="mb-6">
+            {badge}
+          </div>
         )}
-      >
-        {description}
-      </p>
-      <p className="order-first font-display text-5xl font-light tracking-tight text-white">
-        {price}
-      </p>
-      <ul
-        role="list"
-        className={clsx(
-          'order-last mt-10 flex flex-col gap-y-3 text-sm',
-          featured ? 'text-white' : 'text-slate-200',
-        )}
-      >
-        {features.map((feature) => (
-          <li key={feature} className="flex">
-            <CheckIcon className={featured ? 'text-white' : 'text-slate-400'} />
-            <span className="ml-4">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <Button
-        href={href}
-        variant={featured ? 'solid' : 'outline'}
-        color="white"
-        className="mt-8"
-        aria-label={`Get started with the ${name} plan for ${price}`}
-      >
-        Get started
-      </Button>
-    </section>
+
+        {/* Plan Name & Description */}
+        <div className="mb-8">
+          <h3 className="font-display text-xl font-medium text-white sm:text-2xl">
+            {name}
+          </h3>
+          <p className="mt-3 text-gray-400 leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        {/* Pricing */}
+        <div className="mb-8">
+          <div className="flex items-baseline">
+            <span className="font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+              {comingSoon ? 'TBD' : price}
+            </span>
+            {!comingSoon && price !== 'Free' && (
+              <span className="ml-2 text-lg font-medium text-gray-500">
+                /month
+              </span>
+            )}
+          </div>
+          {comingSoon && (
+            <p className="mt-2 text-sm text-gray-500">
+              Pricing announced closer to launch
+            </p>
+          )}
+        </div>
+
+        {/* Features */}
+        <div className="mb-10">
+          <ul className="space-y-4">
+            {features.map((feature) => (
+              <li key={feature} className="flex items-start">
+                <CheckIcon className="mr-3 mt-0.5 text-emerald-400" />
+                <span className="text-gray-300 leading-relaxed">
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* CTA Button */}
+        <Button
+          href={href}
+          variant="solid"
+          color="white"
+          className={clsx(
+            'w-full justify-center py-3 font-medium transition-all',
+            comingSoon && 'opacity-75'
+          )}
+          aria-label={`${comingSoon ? 'Join waitlist for' : 'Get started with'} ${name}`}
+        >
+          {comingSoon ? 'Join Waitlist' : 'Start Free Trial'}
+        </Button>
+      </div>
+    </div>
   )
 }
 
@@ -116,65 +141,56 @@ export function Pricing() {
     <section
       id="pricing"
       aria-label="Pricing"
-      className="bg-slate-900 py-20 sm:py-32"
+      className="relative py-24 sm:py-32"
     >
-      <Container>
-        <div className="md:text-center">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            <span className="relative whitespace-nowrap">
-              <SwirlyDoodle className="absolute top-1/2 left-0 h-[1em] w-full fill-blue-400" />
-              <span className="relative">Simple pricing,</span>
-            </span>{' '}
-            for everyone.
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950/30 to-black" />
+      
+      <Container className="relative">
+        {/* Section Header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="inline-flex items-center rounded-full border border-gray-800 bg-gray-900/50 px-4 py-2 text-sm text-gray-400 backdrop-blur-sm">
+            Pricing
+          </div>
+          <h2 className="mt-8 font-display text-4xl font-medium tracking-tight text-white sm:text-5xl">
+            Start refining today
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
-            It doesn’t matter what size your business is, our software won’t
-            work well for you.
+          <p className="mt-6 text-xl leading-8 text-gray-400">
+            Begin your journey to better work with beta access to Refineset.
           </p>
         </div>
-        <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
-          <Plan
+
+        {/* Pricing Card */}
+        <div className="mx-auto mt-16 max-w-lg">
+          <PricingCard
             name="Starter"
-            price="$9"
-            description="Good for anyone who is self-employed and just getting started."
+            price="Free"
+            description="Perfect for individuals ready to iterate and improve their work through structured reflection."
             href="/register"
+            badge={<StarterBadge />}
+            comingSoon={false}
             features={[
-              'Send 10 quotes and invoices',
-              'Connect up to 2 bank accounts',
-              'Track up to 15 expenses per month',
-              'Manual payroll support',
-              'Export up to 3 reports',
+              'Unlimited iterations and reflections',
+              'Visual progress tracking',
+              'Structured writing prompts',
+              'Export your insights',
+              'Basic analytics and patterns',
+              'Email support'
             ]}
           />
-          <Plan
-            featured
-            name="Small business"
-            price="$15"
-            description="Perfect for small / medium sized businesses."
-            href="/register"
-            features={[
-              'Send 25 quotes and invoices',
-              'Connect up to 5 bank accounts',
-              'Track up to 50 expenses per month',
-              'Automated payroll support',
-              'Export up to 12 reports',
-              'Bulk reconcile transactions',
-              'Track in multiple currencies',
-            ]}
-          />
-          <Plan
-            name="Enterprise"
-            price="$39"
-            description="For even the biggest enterprise companies."
-            href="/register"
-            features={[
-              'Send unlimited quotes and invoices',
-              'Connect up to 15 bank accounts',
-              'Track up to 200 expenses per month',
-              'Automated payroll support',
-              'Export up to 25 reports, including TPS',
-            ]}
-          />
+        </div>
+
+        {/* Future Plans Hint */}
+        <div className="mx-auto mt-12 max-w-2xl text-center">
+          <p className="text-sm text-gray-500">
+            Team and enterprise plans coming soon.{' '}
+            <a
+              href="/register"
+              className="font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              Get early access →
+            </a>
+          </p>
         </div>
       </Container>
     </section>
