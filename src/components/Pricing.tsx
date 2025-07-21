@@ -29,11 +29,19 @@ function CheckIcon({
 function StarterBadge() {
   return (
     <div className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400 backdrop-blur-sm">
-      <span className="relative mr-2 h-1.5 w-1.5">
+      <span className="relative mr-2 h-1.5 w-1.5 flex items-center justify-center">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
         <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
       </span>
       Beta Access
+    </div>
+  )
+}
+
+function PopularBadge() {
+  return (
+    <div className="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-400 backdrop-blur-sm">
+      Most Popular
     </div>
   )
 }
@@ -160,8 +168,8 @@ export function Pricing() {
           </p>
         </div>
 
-        {/* Pricing Card */}
-        <div className="mx-auto mt-16 max-w-lg">
+        {/* Pricing Cards */}
+        <div className="mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-8 lg:grid-cols-3">
           <PricingCard
             name="Starter"
             price="Free"
@@ -170,12 +178,47 @@ export function Pricing() {
             badge={<StarterBadge />}
             comingSoon={false}
             features={[
-              'Unlimited iterations and reflections',
-              'Visual progress tracking',
-              'Structured writing prompts',
+              'Up to 10 iterations per month',
+              'Basic progress tracking',
+              'Essential writing prompts',
               'Export your insights',
-              'Basic analytics and patterns',
               'Email support'
+            ]}
+          />
+          
+          <PricingCard
+            name="Pro"
+            price="$5"
+            description="Enhanced tools and unlimited iterations for individuals who want to accelerate their growth."
+            href="/register"
+            badge={<PopularBadge />}
+            comingSoon={false}
+            features={[
+              'Unlimited iterations and reflections',
+              'Advanced visual progress tracking',
+              'Premium writing prompts & templates',
+              'Priority export options',
+              'Advanced analytics and patterns',
+              'Priority email support',
+              'Integration with productivity tools'
+            ]}
+          />
+          
+          <PricingCard
+            name="Team"
+            price="$20"
+            description="Collaboration features and team insights for organizations focused on continuous improvement."
+            href="/register"
+            comingSoon={false}
+            features={[
+              'Everything in Pro',
+              'Team collaboration & sharing',
+              'Team analytics dashboard',
+              'Admin controls & permissions',
+              'Custom branding',
+              'Dedicated support channel',
+              'API access',
+              'Advanced integrations'
             ]}
           />
         </div>
