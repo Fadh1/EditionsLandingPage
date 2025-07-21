@@ -15,11 +15,6 @@ export function Hero() {
             <p className="mt-6 text-lg tracking-tight text-gray-300 max-w-2xl mx-auto">
               Refineset gives you a simple way to refine your work. Go from messy draft to better version—again and again.
             </p>
-            <div className="mt-10 flex justify-center">
-              <Button href="https://app.refineset.com" color="white">
-                Get Started
-              </Button>
-            </div>
           </div>
           
           {/* App Screenshot */}
