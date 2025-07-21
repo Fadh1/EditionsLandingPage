@@ -52,7 +52,7 @@ export function HowItWorks() {
         </div>
 
         {/* Steps */}
-        <div className="mx-auto mt-20 max-w-7xl sm:mt-28">
+        <div className="mx-auto mt-20 max-w-[90rem] sm:mt-28">
           <div className="space-y-32 sm:space-y-40">
             {steps.map((step, index) => (
               <div key={step.step} className="relative">
@@ -61,13 +61,13 @@ export function HowItWorks() {
                   <div className="absolute left-1/2 top-full z-0 h-32 w-px -translate-x-px bg-gradient-to-b from-gray-700/50 via-gray-800/30 to-transparent sm:h-40" />
                 )}
                 
-                <div className={`relative z-10 grid gap-16 lg:grid-cols-2 lg:gap-20 ${
+                <div className={`relative z-10 grid gap-20 lg:grid-cols-5 lg:gap-24 ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}>
                   
                   {/* Content */}
-                  <div className={`flex flex-col justify-center ${
-                    index % 2 === 1 ? 'lg:col-start-2' : ''
+                  <div className={`flex flex-col justify-center lg:col-span-2 ${
+                    index % 2 === 1 ? 'lg:col-start-4' : ''
                   }`}>
                     {/* Step Number */}
                     <div className="flex items-center gap-4 mb-8">
@@ -95,18 +95,19 @@ export function HowItWorks() {
                   </div>
 
                   {/* Image */}
-                  <div className={`relative ${
+                  <div className={`relative lg:col-span-3 ${
                     index % 2 === 1 ? 'lg:col-start-1' : ''
                   }`}>
                     <div className="group relative">
                       {/* Device Frame */}
-                      <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/50 p-2 backdrop-blur-sm transition-all duration-700 group-hover:border-gray-700 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+                      <div className="relative overflow-hidden rounded-2xl border border-gray-800 bg-gray-900/50 p-3 backdrop-blur-sm transition-all duration-700 group-hover:border-gray-700 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
                         <div className="overflow-hidden rounded-xl">
                           <Image
                             src={step.image}
                             alt={`${step.title} - Step ${step.step}`}
                             className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
                             priority={index === 0}
+                            sizes="(max-width: 1024px) 100vw, 60vw"
                           />
                           {/* Subtle overlay */}
                           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 via-transparent to-gray-900/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -114,7 +115,7 @@ export function HowItWorks() {
                       </div>
                       
                       {/* Ambient Glow */}
-                      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
+                      <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100" />
                     </div>
                   </div>
                 </div>
